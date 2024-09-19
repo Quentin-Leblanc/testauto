@@ -1,16 +1,32 @@
 const express = require('express');
 const dotenv = require('dotenv');
+const automate = require('./automate');
 
-// Charger les variables d'environnement
+// Charger les variables d'environnement depuis .env
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+// Middleware pour parser le JSON
+app.use(express.json());
+
+// Route de base
 app.get('/', (req, res) => {
-    res.send('Hello World!');
+    res.send('Bonjour, votre serveur Express fonctionne !');
 });
 
+// Route pour exécuter l'automatisation
+app.post('/automate', async (req, res) => {
+    try {
+        const result = await automate();
+        res.json({ success: true, data: result });
+    } catch (error) {
+        res.status(500).json({ success: false, error: error.message });
+    }
+});
+
+// Démarrer le serveur
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+    console.log(`Serveur démarré sur le port ${PORT}`);
 });

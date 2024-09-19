@@ -4,9 +4,9 @@
 # Modules Node.js
 node_modules/
 
+# Fichiers de log
+*.log
+
 # Dossiers de build
 dist/
 build/
-
-# Fichiers de logs
-*.log

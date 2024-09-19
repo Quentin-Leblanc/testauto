@@ -8,6 +8,10 @@ const logger = require('../logger');
  */
 async function sendPrompt(promptText) {
     try {
+        if (!promptText) {
+            throw new Error('Le promptText est requis.');
+        }
+
         logger.info(`Envoi du prompt à ChatGPT: "${promptText}"`);
 
         const configuration = new Configuration({

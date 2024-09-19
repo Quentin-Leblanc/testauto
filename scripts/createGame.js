@@ -8,8 +8,6 @@ async function createGame() {
     try {
         logger.info('Création du jeu Mafia SC2 Loup-Garou.');
         // Logique pour initialiser le jeu
-        // Par exemple, créer des rôles, assigner des joueurs, etc.
-        // Ceci est un exemple simplifié
         const game = {
             players: [],
             roles: ['Mafia', 'Loup-Garou', 'Citoyen'],

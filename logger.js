@@ -19,6 +19,8 @@ const logFilePath = path.join(logDir, 'automation.log');
 let logStream;
 try {
     logStream = fs.createWriteStream(logFilePath, { flags: 'a' });
+    console.log('LogStream créé.');
+    logStream.write(`[INFO] ${new Date().toISOString()} - Logger initialisé.\n`);
 } catch (err) {
     console.error(`Erreur lors de l'ouverture du fichier de log: ${err.message}`);
 }

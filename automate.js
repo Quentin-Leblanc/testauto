@@ -1,6 +1,8 @@
 // automate.js
 const tasks = require('./tasks');
 const logger = require('./logger');
+const { resetRequestCount } = require('./requestLimiter');
+const runTests = require('./testManager');
 
 /**
  * Fonction principale d'automatisation.
@@ -14,7 +16,10 @@ async function automate() {
         console.log('Log de test: automate.js fonctionne.');
         logger.info('Log de test: automate.js fonctionne.');
 
-        // Exécuter les différentes tâches
+        // Exécuter les tests automatisés
+        await runTests();
+
+        // Exécuter les différentes tâches seulement si les tests réussissent
         console.log('Exécution de createGame');
         logger.info('Exécution de createGame');
         await tasks.createGame();
@@ -41,7 +46,17 @@ async function automate() {
     }
 }
 
-// Exécuter la fonction automate si le script est lancé directement
+/**
+ * Réinitialise le compteur de requêtes toutes les 24 heures.
+ */
+function scheduleReset() {
+    const oneDay = 24 * 60 * 60 * 1000; // 24 heures en millisecondes
+    setInterval(() => {
+        resetRequestCount();
+    }, oneDay);
+}
+
+// Exécuter la fonction automate et démarrer la réinitialisation du compteur
 if (require.main === module) {
     automate()
         .then(result => {
@@ -50,6 +65,9 @@ if (require.main === module) {
         .catch(error => {
             console.error('Automatisation échouée:', error);
         });
+
+    // Démarrer la réinitialisation du compteur
+    scheduleReset();
 }
 
 module.exports = automate;

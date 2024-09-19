@@ -1,30 +1,21 @@
-const { Configuration, OpenAIApi } = require('openai');
-const dotenv = require('dotenv');
+// automate.js
+const tasks = require('./tasks');
+const logger = require('./logger');
 
-// Charger les variables d'environnement depuis .env
-dotenv.config();
-
-const configuration = new Configuration({
-    apiKey: process.env.OPENAI_API_KEY,
-});
-
-const openai = new OpenAIApi(configuration);
-
-/**
- * Fonction d'automatisation utilisant l'API OpenAI.
- * @returns {Promise<string>} - Réponse de l'API OpenAI.
- */
 async function automate() {
     try {
-        const response = await openai.createCompletion({
-            model: "text-davinci-003",
-            prompt: "Bonjour, comment puis-je vous aider aujourd'hui?",
-            max_tokens: 50,
-        });
+        logger.info('Début de l\'automatisation.');
 
-        return response.data.choices[0].text.trim();
+        // Exécuter les différentes tâches
+        await tasks.createGame();
+        await tasks.sendPromptToChatGPT();
+        await tasks.handleErrors();
+        await tasks.updateProject();
+
+        logger.info('Automatisation terminée avec succès.');
+        return 'Automatisation réussie.';
     } catch (error) {
-        console.error('Erreur lors de l\'appel à l\'API OpenAI:', error);
+        logger.error(`Erreur durant l'automatisation: ${error.message}`);
         throw error;
     }
 }

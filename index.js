@@ -1,12 +1,14 @@
+// index.js
 const express = require('express');
 const dotenv = require('dotenv');
 const automate = require('./automate');
+const config = require('./config');
 
 // Charger les variables d'environnement depuis .env
 dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = config.port;
 
 // Middleware pour parser le JSON
 app.use(express.json());

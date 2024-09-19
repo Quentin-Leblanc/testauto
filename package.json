@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js",
+    "automate": "node automate.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -25,6 +26,7 @@
     "openai": "^3.3.0"
   },
   "devDependencies": {
+    "node-cron": "^3.0.3",
     "nodemon": "^2.0.22"
   }
 }

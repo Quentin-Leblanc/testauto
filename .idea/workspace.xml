@@ -24,6 +24,9 @@
   &quot;associatedIndex&quot;: 4
 }</component>
   <component name="ProjectId" id="2mHK9vqDr1cKK5jnE7TIhHB0KLA" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -60,7 +63,7 @@
       <updated>1726727913317</updated>
       <workItem from="1726727914384" duration="326000" />
       <workItem from="1726774126736" duration="3652000" />
-      <workItem from="1726777838313" duration="1165000" />
+      <workItem from="1726777838313" duration="1938000" />
     </task>
     <servers />
   </component>

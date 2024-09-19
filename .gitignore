@@ -5,8 +5,12 @@
 node_modules/
 
 # Fichiers de log
-*.log
+logs/
 
 # Dossiers de build
 dist/
 build/
+
+# Fichiers et dossiers de l'IDE
+.idea/
+.vscode/

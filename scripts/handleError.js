@@ -1,26 +1,21 @@
-// scripts/handleError.js
 const logger = require('../logger');
 
-/**
- * Fonction pour gérer les erreurs et envoyer des prompts d'erreur à ChatGPT.
- */
 async function handleError(error) {
-    try {
-        logger.info('Gestion des erreurs.');
+    logger.error('Erreur capturée :', error.message);
+    logger.error('Détails de l\'erreur :', error.stack);
 
-        const promptText = `Une erreur est survenue dans le projet d'automatisation: ${error.message}. Fournis des suggestions pour résoudre ce problème.`;
+    const debugPrompt = `
+    J'ai rencontré l'erreur suivante : "${error.message}".
+    Peux-tu me proposer une solution pour corriger cette erreur dans mon code ?
+    Réponds uniquement avec un code JSON contenant les corrections à appliquer encodé en base64.
+    `;
 
-        const sendPrompt = require('./sendPrompt');
-        const suggestions = await sendPrompt(promptText);
+    const { sendPromptToChatGPT } = require('./sendPrompt');
+    const response = await sendPromptToChatGPT(debugPrompt);
 
-        logger.info(`Suggestions de ChatGPT pour l'erreur: "${suggestions}"`);
-        // Vous pouvez implémenter la logique pour appliquer ces suggestions
-        // Par exemple, créer des issues sur GitHub, envoyer des notifications, etc.
-        return suggestions;
-    } catch (err) {
-        logger.error(`Erreur lors de la gestion des erreurs: ${err.message}`);
-        throw err;
-    }
+    logger.info('Réponse complète de ChatGPT pour correction:', response);
+
+    return response;
 }
 
-module.exports = handleError;
+module.exports = { handleError };

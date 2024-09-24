@@ -1,0 +1,1 @@
+export const ROLES = { 'Loup Garou': {}, 'Villageois': {} };

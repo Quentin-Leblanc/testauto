@@ -12,10 +12,43 @@ async function runTests() {
 
         // Liste des prompts de test
         const testPrompts = [
-            'Test prompt 1 pour vérifier l\'API OpenAI.',
-            'Test prompt 2 pour vérifier l\'API OpenAI.',
-            'Test prompt 3 pour vérifier l\'API OpenAI.',
-            'Test prompt 4 pour vérifier l\'API OpenAI.',
+            // Test pour créer un nouveau fichier
+            `
+Créer un fichier 'src/utils/helper.js' avec le contenu suivant :
+
+\`\`\`javascript
+function helper() {
+  console.log('Helper function');
+}
+module.exports = helper;
+\`\`\`
+
+Réponds uniquement avec un objet JSON contenant l'action, le chemin du fichier et son contenu.
+`,
+
+            // Test pour modifier un fichier existant
+            `
+Ajouter le code suivant à la fin du fichier 'src/index.js' :
+
+\`\`\`javascript
+// Nouvelle fonctionnalité ajoutée automatiquement
+function newFeature() {
+  console.log('Nouvelle fonctionnalité');
+}
+\`\`\`
+
+Réponds uniquement avec un objet JSON contenant l'action, le chemin du fichier et le contenu à ajouter.
+`,
+
+            // Test pour installer des dépendances
+            `
+Ajouter les dépendances suivantes à mon projet :
+
+- axios
+- fs-extra
+
+Réponds uniquement avec un objet JSON contenant l'action et la liste des dépendances à installer.
+`,
         ];
 
         for (const prompt of testPrompts) {

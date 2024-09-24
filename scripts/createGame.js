@@ -1,21 +1,12 @@
 // scripts/createGame.js
 const logger = require('../logger');
 
-/**
- * Fonction pour créer un jeu Mafia SC2 Loup-Garou.
- */
 async function createGame() {
     try {
-        logger.info('Création du jeu Mafia SC2 Loup-Garou.');
-        // Logique pour initialiser le jeu
-        const game = {
-            players: [],
-            roles: ['Mafia', 'Loup-Garou', 'Citoyen'],
-            state: 'En attente',
-        };
-        // Sauvegarder l'état du jeu, par exemple dans un fichier JSON ou une base de données
+        logger.info('Création du jeu...');
+        // Implémentation de la création du jeu
+        console.log('Jeu créé avec succès.');
         logger.info('Jeu créé avec succès.');
-        return game;
     } catch (error) {
         logger.error(`Erreur lors de la création du jeu: ${error.message}`);
         throw error;

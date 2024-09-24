@@ -1,47 +1,26 @@
-// logger.js
 const fs = require('fs');
 const path = require('path');
+const winston = require('winston');
 
+// Define log directory and file
 const logDir = path.join(__dirname, 'logs');
-
-try {
-    // Créer le dossier de logs s'il n'existe pas
-    if (!fs.existsSync(logDir)) {
-        fs.mkdirSync(logDir, { recursive: true });
-        console.log('Dossier logs créé.');
-    }
-} catch (err) {
-    console.error(`Erreur lors de la création du dossier logs: ${err.message}`);
+if (!fs.existsSync(logDir)) {
+    fs.mkdirSync(logDir);
 }
 
-const logFilePath = path.join(logDir, 'automation.log');
+const logFile = path.join(logDir, 'automation.log');
 
-let logStream;
-try {
-    logStream = fs.createWriteStream(logFilePath, { flags: 'a' });
-    console.log('LogStream créé.');
-    logStream.write(`[INFO] ${new Date().toISOString()} - Logger initialisé.\n`);
-} catch (err) {
-    console.error(`Erreur lors de l'ouverture du fichier de log: ${err.message}`);
-}
+// Logger configuration
+const logger = winston.createLogger({
+    level: 'info',
+    format: winston.format.combine(
+        winston.format.timestamp(),
+        winston.format.json()
+    ),
+    transports: [
+        new winston.transports.File({ filename: logFile }),
+        new winston.transports.Console()
+    ]
+});
 
-function info(message) {
-    const logMessage = `[INFO] ${new Date().toISOString()} - ${message}\n`;
-    console.log(logMessage.trim());
-    if (logStream) {
-        logStream.write(logMessage);
-    }
-}
-
-function error(message) {
-    const logMessage = `[ERROR] ${new Date().toISOString()} - ${message}\n`;
-    console.error(logMessage.trim());
-    if (logStream) {
-        logStream.write(logMessage);
-    }
-}
-
-module.exports = {
-    info,
-    error,
-};
+module.exports = logger;

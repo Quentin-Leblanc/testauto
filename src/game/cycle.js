@@ -1,0 +1,1 @@
+function cycleJourNuit() {\n  // Logique des cycles jour/nuit\n  // Pendant la nuit, les Loups Garous choisissent une victime\n  // Pendant le jour, les Villageois votent pour éliminer un suspect\n}

@@ -1,40 +1,62 @@
 // testOpenAI.js
-const { Configuration, OpenAIApi } = require('openai');
-const config = require('./config');
+const sendPrompt = require('./scripts/sendPrompt');
 const logger = require('./logger');
 
 async function testOpenAI() {
     try {
         logger.info('Test de l\'API OpenAI.');
 
-        const configuration = new Configuration({
-            apiKey: config.openaiApiKey,
-        });
+        // Prompt pour créer un nouveau fichier
+        const createFilePrompt = `
+Créer un fichier 'src/utils/helper.js' avec le contenu suivant :
 
-        const openai = new OpenAIApi(configuration);
+\`\`\`javascript
+function helper() {
+  console.log('Helper function');
+}
+module.exports = helper;
+\`\`\`
 
-        const response = await openai.createChatCompletion({
-            model: 'gpt-4', // Remplacez par 'gpt-3.5-turbo' si vous préférez
-            messages: [{ role: 'user', content: 'Test prompt pour vérifier l\'API OpenAI.' }],
-            max_tokens: 10,
-        });
+Réponds uniquement avec un objet JSON contenant l'action, le chemin du fichier et son contenu.
+`;
 
-        const reply = response.data.choices[0].message.content.trim();
-        logger.info(`Réponse de ChatGPT: "${reply}"`);
-        console.log(`Réponse de ChatGPT: "${reply}"`);
+        const createFileResponse = await sendPrompt(createFilePrompt);
+        console.log(`Réponse de création de fichier: "${createFileResponse}"`);
+
+        // Prompt pour modifier un fichier existant
+        const editFilePrompt = `
+Ajouter le code suivant à la fin du fichier 'src/index.js' :
+
+\`\`\`javascript
+// Nouvelle fonctionnalité ajoutée automatiquement
+function newFeature() {
+  console.log('Nouvelle fonctionnalité');
+}
+\`\`\`
+
+Réponds uniquement avec un objet JSON contenant l'action, le chemin du fichier et le contenu à ajouter.
+`;
+
+        const editFileResponse = await sendPrompt(editFilePrompt);
+        console.log(`Réponse d'édition de fichier: "${editFileResponse}"`);
+
+        // Prompt pour installer des dépendances
+        const installDepsPrompt = `
+Ajouter les dépendances suivantes à mon projet :
+
+- axios
+- fs-extra
+
+Réponds uniquement avec un objet JSON contenant l'action et la liste des dépendances à installer.
+`;
+
+        const installDepsResponse = await sendPrompt(installDepsPrompt);
+        console.log(`Réponse d'installation des dépendances: "${installDepsResponse}"`);
+
+        logger.info('Tous les tests ont réussi.');
     } catch (error) {
-        if (error.response) {
-            logger.error(`Erreur lors du test de l'API OpenAI: ${error.response.status} - ${error.response.statusText}`);
-            logger.error(`Détails de l'erreur: ${JSON.stringify(error.response.data)}`);
-            console.error(`Erreur lors du test de l'API OpenAI: ${error.response.status} - ${error.response.statusText}`);
-            console.error(`Détails de l'erreur: ${JSON.stringify(error.response.data)}`);
-        } else if (error.request) {
-            logger.error(`Erreur lors du test de l'API OpenAI: Aucune réponse reçue.`);
-            console.error(`Erreur lors du test de l'API OpenAI: Aucune réponse reçue.`);
-        } else {
-            logger.error(`Erreur lors du test de l'API OpenAI: ${error.message}`);
-            console.error(`Erreur lors du test de l'API OpenAI: ${error.message}`);
-        }
+        logger.error(`Erreur lors du test de l'API OpenAI: ${error.message}`);
+        console.error(`Erreur lors du test de l'API OpenAI: ${error.message}`);
     }
 }
 

@@ -3,10 +3,13 @@ const Bottleneck = require('bottleneck');
 const config = require('./config');
 const logger = require('./logger');
 
+// Afficher le nombre maximal de requêtes pour débogage
+logger.info(`Max Requests configurés : ${config.maxRequests}`);
+
 // Créer une instance de Bottleneck avec une limite de 4 requêtes par minute
 const limiter = new Bottleneck({
-    reservoir: config.maxRequests || 4, // Nombre de requêtes initiales
-    reservoirRefreshAmount: config.maxRequests || 4, // Nombre de requêtes à réinitialiser
+    reservoir: config.maxRequests, // Nombre de requêtes initiales
+    reservoirRefreshAmount: config.maxRequests, // Nombre de requêtes à réinitialiser
     reservoirRefreshInterval: 60 * 1000, // Intervalle de réinitialisation en millisecondes (1 minute)
     maxConcurrent: 1, // Nombre maximum de requêtes simultanées
     minTime: 250, // Temps minimum entre les requêtes en ms
@@ -26,7 +29,8 @@ function limitRequest(fn) {
             if (isDebugging) {
                 logger.info(`Mode débogage actif. Requête spéciale de débogage envoyée.`);
             } else {
-                logger.info(`Envoi de la requête. Réservoir restant : ${limiter.reservoir}`);
+                const reservoir = await limiter.currentReservoir();
+                logger.info(`Envoi de la requête. Réservoir restant : ${reservoir}`);
             }
             return await fn(...args);
         } catch (error) {
@@ -57,7 +61,7 @@ module.exports = {
     resetRequestCount: () => {
         logger.info('Réinitialisation du réservoir de requêtes.');
         limiter.updateSettings({
-            reservoir: config.maxRequests || 4,
+            reservoir: config.maxRequests,
         });
     },
     activateDebugMode,

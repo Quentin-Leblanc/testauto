@@ -4,13 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2fc0a46d-3658-42ac-bc01-85d2901a1376" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/requestLimiter.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/testOpenAI.js" afterDir="false" />
+    <list default="true" id="e42ea281-085c-4d60-9639-46f9c8e7d748" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/scripts/handleResponse.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/scripts/runTests.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/cycle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/game/roles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/network/sync.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/automate.js" beforeDir="false" afterPath="$PROJECT_DIR$/automate.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/logger.js" beforeDir="false" afterPath="$PROJECT_DIR$/logger.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requestLimiter.js" beforeDir="false" afterPath="$PROJECT_DIR$/requestLimiter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/createGame.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/createGame.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/handleError.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/handleError.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/scripts/prompts.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/prompts.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/scripts/sendPrompt.js" beforeDir="false" afterPath="$PROJECT_DIR$/scripts/sendPrompt.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/testManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/testOpenAI.js" beforeDir="false" afterPath="$PROJECT_DIR$/testOpenAI.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,12 +40,10 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 4
 }</component>
-  <component name="ProjectId" id="2mHK9vqDr1cKK5jnE7TIhHB0KLA" />
-  <component name="ProjectLevelVcsManager">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="2mJ9aO2pcmUezMNcrIs0HNCtxbx" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -52,105 +62,6 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager">
-    <configuration default="true" type="JetRunConfigurationType">
-      <module name="testauto" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <module name="testauto" />
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="PythonConfigurationType" factoryName="Python">
-      <module name="testauto" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="Python.FlaskServer">
-      <module name="testauto" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="launchJavascriptDebuger" value="false" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="Tox" factoryName="Tox">
-      <module name="testauto" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="docs" factoryName="Docutils task">
-      <module name="testauto" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="docutils_input_file" value="" />
-      <option name="docutils_output_file" value="" />
-      <option name="docutils_params" value="" />
-      <option name="docutils_task" value="" />
-      <option name="docutils_open_in_browser" value="false" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="docs" factoryName="Sphinx task">
-      <module name="testauto" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="" />
-      <option name="IS_MODULE_SDK" value="false" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="docutils_input_file" value="" />
-      <option name="docutils_output_file" value="" />
-      <option name="docutils_params" value="" />
-      <option name="docutils_task" value="" />
-      <option name="docutils_open_in_browser" value="false" />
-      <method v="2" />
-    </configuration>
-  </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
@@ -162,15 +73,16 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="2fc0a46d-3658-42ac-bc01-85d2901a1376" name="Changes" comment="" />
-      <created>1726727913317</created>
+      <changelist id="e42ea281-085c-4d60-9639-46f9c8e7d748" name="Changes" comment="" />
+      <created>1726783875876</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1726727913317</updated>
-      <workItem from="1726727914384" duration="326000" />
-      <workItem from="1726774126736" duration="3652000" />
-      <workItem from="1726777838313" duration="4719000" />
-      <workItem from="1726782651083" duration="446000" />
+      <updated>1726783875876</updated>
+      <workItem from="1726783877238" duration="2004000" />
+      <workItem from="1726907839587" duration="14000" />
+      <workItem from="1726911962594" duration="27000" />
+      <workItem from="1726993780757" duration="674000" />
+      <workItem from="1727158318695" duration="440000" />
     </task>
     <servers />
   </component>
